@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Met API Search App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="intro-text">
+        <h1>Met API Search</h1>
+        <h2>Search Criteria:</h2>
+        <ul>
+          <li>Keyword: "flowers", "ocean", "mountains", etc.</li>
+          <li>Date: "1800–1900", "1764-1765"</li>
+          <li>
+            Public Domain: Search whether or not artwork is on view in a museum.
+          </li>
+        </ul>
+      </div>
+      <form action="" id="searchMetApi">
+        <label for="searchKeyword"
+          >Keyword:
+          <input
+            type="text"
+            id="searchKeyword"
+            placeholder="Search keyword"
+            required
+          />
+        </label>
+        <label for="searchCentury"
+          >Begin Date:
+          <input type="text" id="searchBegin" placeholder="From date" />
+        </label>
+        <label for="searchCentury"
+          >End Date:
+          <input type="text" id="searchEnd" placeholder="To date" />
+        </label>
+        <label for="searchPublic"
+          >Public:
+          <input
+            type="checkbox"
+            name="searchPublic"
+            id="searchPublic"
+            value="public"
+          />
+        </label>
+        <button id="search-btn" type="submit">Search</button>
+      </form>
+      <div id="search-result">
+        <p>
+          Thanks for visiting. Search keyword, century created, and whether
+          artwork is in the public domain.
+        </p>
+      </div>
+    </div>
+    <script src="search.js"></script>
+  </body>
+</html>
