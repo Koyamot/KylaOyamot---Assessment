@@ -52,7 +52,7 @@ const artResults = async (endpoints) => {
         }
       });
     });
-    //clear Results container
+  //clear Results container
   document.getElementById("search-result").innerHTML = "";
   return artworks;
 };
@@ -78,7 +78,9 @@ form.addEventListener("submit", async function (e) {
     "No Results, please try again.");
 
   //search
-  const data = await searchArt(keyword, dateBegin, dateEnd, isPublic).then(data => data).catch(error);
+  const data = await searchArt(keyword, dateBegin, dateEnd, isPublic)
+    .then((data) => data)
+    .catch(error);
   var endpoints = data.objectIDs.slice(0, 5);
   const results = await artResults(endpoints);
   const sr = document.getElementById("search-result");

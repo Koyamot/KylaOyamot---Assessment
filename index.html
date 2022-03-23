@@ -6,8 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- snowplow -->
+    <script type="text/javascript" async="1">
+      (function (p, l, o, w, i, n, g) {
+        if (!p[i]) {
+          p.GlobalSnowplowNamespace = p.GlobalSnowplowNamespace || [];
+          p.GlobalSnowplowNamespace.push(i);
+          p[i] = function () {
+            (p[i].q = p[i].q || []).push(arguments);
+          };
+          p[i].q = p[i].q || [];
+          n = l.createElement(o);
+          g = l.getElementsByTagName(o)[0];
+          n.async = 1;
+          n.src = w;
+          g.parentNode.insertBefore(n, g);
+        }
+      })(
+        window,
+        document,
+        "script",
+        "https://d9z8g2uv45szo.cloudfront.net/3.0.0/39ak27z1.js",
+        "snowplow"
+      );
+      snowplow("newTracker", "sp", "{{collector_url_here}}", {
+        appId: "test-tracking",
+        discoverRootDomain: true,
+        cookieSameSite: "Lax", // Recommended
+        contexts: {
+          webPage: true, // default, can be omitted
+        },
+      });
+      window.snowplow('trackPageView');
+    </script>
+    <!-- end snowplow -->
     <title>Met API Search App</title>
   </head>
+
   <body>
     <div class="container">
       <div class="intro-text">
