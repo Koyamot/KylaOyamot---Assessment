@@ -83,6 +83,7 @@ form.addEventListener("submit", async function (e) {
     .catch(error);
   var endpoints = data.objectIDs.slice(0, 5);
   const results = await artResults(endpoints);
+  console.log(results)
   const sr = document.getElementById("search-result");
   //create cards
   artworks.map((art) => {
