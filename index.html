@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-5P68LPH");
+    </script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,27 +22,62 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- snowplow -->
     <script type="text/javascript">
-      ;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
-      p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
-      };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
-      n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://d19b9et13n2wqp.cloudfront.net/3.0.0/39ak27z1.js","snowplow"));
-      
-      snowplow('newTracker', 'sp', 'https://com-snowplowanalytics-dev1.mini.snplow.net', {
-          appId: 'my-app-id',
-      });
-      
-      snowplow('enableActivityTracking', {
-        minimumVisitLength: 30,
-        heartbeatDelay: 10
-      });
-      snowplow('trackPageView');
-      
-      </script>
+      (function (p, l, o, w, i, n, g) {
+        if (!p[i]) {
+          p.GlobalSnowplowNamespace = p.GlobalSnowplowNamespace || [];
+          p.GlobalSnowplowNamespace.push(i);
+          p[i] = function () {
+            (p[i].q = p[i].q || []).push(arguments);
+          };
+          p[i].q = p[i].q || [];
+          n = l.createElement(o);
+          g = l.getElementsByTagName(o)[0];
+          n.async = 1;
+          n.src = w;
+          g.parentNode.insertBefore(n, g);
+        }
+      })(
+        window,
+        document,
+        "script",
+        "https://d19b9et13n2wqp.cloudfront.net/3.0.0/39ak27z1.js",
+        "snowplow"
+      );
+
+      snowplow(
+        "newTracker",
+        "sp",
+        "https://com-snowplowanalytics-dev1.mini.snplow.net",
+        {
+          appId: "my-app-id",
+          contexts: {
+            webPage: true, // default, can be omitted
+            geolocation: true,
+            formTracking: true,
+            timezone: true,
+          },
+        }
+      );
+
+      snowplow("trackPageView");
+      snowplow("enableFormTracking");
+      snowplow("enableGeolocationContext");
+    </script>
     <!-- end snowplow -->
     <title>Met API Search App</title>
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5P68LPH"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="container">
       <div class="intro-text">
         <h1>Met API Search</h1>
