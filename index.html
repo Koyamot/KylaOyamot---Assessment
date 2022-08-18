@@ -47,18 +47,22 @@
       snowplow(
         "newTracker",
         "sp",
-        "https://com-snowplowanalytics-dev1.mini.snplow.net",
+        "https://test-kylao-saas1.collector.snplow.net",
         {
-          appId: "my-app-id",
+          appId: "Kyla-BPD-Testing",
           contexts: {
             webPage: true, // default, can be omitted
+            performanceTiming: true, // this captures performance metrics like load times
             geolocation: true,
             formTracking: true,
             timezone: true,
           },
         }
       );
-
+      snowplow("enableActivityTracking", {
+        minimumVisitLength: 10,
+        heartbeatDelay: 10,
+      });
       snowplow("trackPageView");
       snowplow("enableFormTracking");
       snowplow("enableGeolocationContext");
